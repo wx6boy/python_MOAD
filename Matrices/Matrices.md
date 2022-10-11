@@ -1,6 +1,6 @@
-#Matrices
+# Matrices
 
-+ [ diagonalSum](# diagonalSum)
++ [diagonalSum](#diagonalSum)
 
 ## diagonalSum
 

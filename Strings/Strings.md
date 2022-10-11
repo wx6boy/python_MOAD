@@ -1,6 +1,6 @@
-#Strings
+# Strings
 
-+ [ squares](# squares)
++ [squares](#squares)
 
 ## squares
 

@@ -1,7 +1,7 @@
-#Arrays
+# Arrays
 
-+ [ merge](# merge)
-+ [ squares](# squares)
++ [merge](#merge)
++ [squares](#squares)
 
 ## merge
 
