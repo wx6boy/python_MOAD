@@ -7,7 +7,6 @@ def create_md(path):
     for dirname, _, filenames in os.walk(path):
         for filename in filenames:
             if filename.endswith('.py') and filename != os.path.basename(__file__):
-                check_substring = True
                 with open(path + "/" + filename) as f:
                     if "# title" in f.read():
                         files_list.append(os.path.join(dirname, filename))
