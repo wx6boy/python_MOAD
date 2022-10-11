@@ -20,7 +20,7 @@ def create_md(path):
     if files_list:
 
         f = open(md_path, 'a+')
-        f.write("#" + path.split("/")[-1] + "\n\n")
+        f.write("# " + path.split("/")[-1] + "\n\n")
         f.close()
 
         titles = []
@@ -28,7 +28,7 @@ def create_md(path):
         for current_file in files_list:
             f = open(current_file)
             line = f.readline()
-            line = line.replace("# title", "") + ""
+            line = line.replace("# title ", "") + ""
             line = line.replace("\n", "") + ""
             titles.append(line)
             f.close()
