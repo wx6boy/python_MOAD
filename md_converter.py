@@ -61,7 +61,7 @@ def create_md(path):
 
 if __name__ == "__main__":
     if len(argv) < 2:
-        print("You need to write in parameter directory to catalog of .py files.")
+        print("You need to write in parameters the directory to  of .py files.")
     else:
         file_directory = argv[1]
         if os.path.exists(file_directory) and os.path.isdir(file_directory):
