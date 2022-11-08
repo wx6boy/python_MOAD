@@ -9,8 +9,6 @@ from ComplexNumber import ComplexNumber
 class TestComplexNumber(unittest.TestCase):
 
     complex_number = ComplexNumber(7, 6)
-    def SetUp(self):
-        self.complex_number = ComplexNumber(7, 6)
 
     def test_mod(self):
         self.assertEqual(self.complex_number.mod(),
