@@ -28,13 +28,3 @@ class WorkIncome:
         data = self.get_income()
         with open('output.json', 'w') as f:
             f.write(data)
-
-
-def main():
-    service = WorkIncome('input.json')
-    result = service.get_income()
-    print(result)
-
-
-if __name__ == "__main__":
-    main()

@@ -9,6 +9,9 @@ class Task:
         self.description = description
         self.status = status
 
+    def get_status(self):
+        return self.status
+
 
 class Subtask(Task):
     # have comlex task id
