@@ -7,30 +7,44 @@ class TestTaskManager(unittest.TestCase):
         self.manager = task_manager.TaskManager()
 
     def test_create_task(self):
-        task = task_manager.Task(1, "Работа", "Надо работать", "В работе")
-        self.manager.create_task(task)
+        task = self.manager.create_task("Work", "Exercise №1")
         self.assertEqual(self.manager.get_tasks(), [task])
 
     def test_update_status(self):
-        task = task_manager.Task(1, "Работа", "Надо работать", "В работе")
-        self.manager.create_task(task)
-        task = task_manager.Task(1, "Работа", "Надо работать", "Готово")
-        self.manager.update_status(task)
+        task = self.manager.create_task("Work", "Exercise №1")
+        self.manager.update_status(task, "Finished")
         self.assertEqual(self.manager.get_tasks()[0].get_status(), task.get_status())
 
     def test_remove_tasks(self):
-        task = task_manager.Task(1, "Работа", "Надо работать", "В работе")
-        self.manager.create_task(task)
+        self.manager.create_task("Work", "Exercise №1")
         self.manager.remove_tasks()
         self.assertEqual(self.manager.get_tasks(), [])
 
     def test_remove_task_by_id(self):
-        task = task_manager.Task(1, "Работа", "Надо работать", "В работе")
-        self.manager.create_task(task)
-        task = task_manager.Task(2, "Учеба", "Нада учиться", "Отложено")
-        self.manager.create_task(task)
-        self.manager.remove_task_by_id(1)
-        self.assertEqual(self.manager.get_tasks(), [task])
+        first_task = self.manager.create_task("Work", "Exercise №1")
+        remove_id = first_task.get_id()
+        second_task = self.manager.create_task("Work", "Exercise №2")
+        self.manager.remove_task_by_id(remove_id)
+        self.assertEqual(self.manager.get_tasks(), [second_task])
+
+    def test_create_complex_task(self):
+        first_task = self.manager.create_task("Work", "Exercise №1")
+        second_task = self.manager.create_task("Work", "Exercise №2")
+        third_task = self.manager.create_task("Work", "January")
+        self.manager.create_subtask(first_task, third_task.get_id())
+        self.manager.create_subtask(second_task, third_task.get_id())
+        self.assertEqual(self.manager.get_complex_tasks()[0].get_id(), third_task.get_id())
+        self.assertEqual(len(self.manager.get_subtasks()), 2)
+
+    def test_remove_subtasks(self):
+        first_task = self.manager.create_task("Work", "Exercise №1")
+        second_task = self.manager.create_task("Work", "Exercise №2")
+        third_task = self.manager.create_task("Work", "January")
+        self.manager.create_subtask(first_task, third_task.get_id())
+        self.manager.create_subtask(second_task, third_task.get_id())
+        self.manager.remove_subtasks()
+        self.assertEqual(len(self.manager.get_complex_tasks()), 0)
+        self.assertEqual(len(self.manager.get_tasks()), 1)
 
 
 if __name__ == "__main__":
