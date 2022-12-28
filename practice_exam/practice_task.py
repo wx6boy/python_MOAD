@@ -13,6 +13,7 @@ def count_vowels(check_word):
 def function_process(filename):
     f = open(filename, "r", encoding="utf-8")
     data = f.read()
+    f.close()
     data_list = data.split()
     for current_word in data_list:
         while current_word[-1] in punctuations:
@@ -20,7 +21,6 @@ def function_process(filename):
         count_v = count_vowels(current_word)
         if count_v > 1:
             yield current_word
-    f.close()
 
 
 input_file = "input.txt"
